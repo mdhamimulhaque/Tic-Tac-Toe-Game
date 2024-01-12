@@ -1,4 +1,4 @@
-export default function calculateWinner(squares) {
+export default function calculateWinner(squareValue) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -11,8 +11,12 @@ export default function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+    if (
+      squareValue[a] &&
+      squareValue[a] === squareValue[b] &&
+      squareValue[a] === squareValue[c]
+    ) {
+      return squareValue[a];
     }
   }
   return null;
