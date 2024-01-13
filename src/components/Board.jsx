@@ -1,12 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
 import calculateWinner from "../utils/calculateWinner";
 import Square from "./Square";
 
-const Board = () => {
-  const [squareValue, setSquareValue] = useState(Array(9).fill(null));
-  const [isXNext, setIsXNext] = useState(true);
-
+const Board = ({ isXNext, squareValue, handlePlay }) => {
   const winner = calculateWinner(squareValue);
   let status;
 
@@ -28,8 +25,7 @@ const Board = () => {
       newSquare[i] = "O";
     }
 
-    setSquareValue(newSquare);
-    setIsXNext(!isXNext);
+    handlePlay(newSquare);
   };
 
   return (
