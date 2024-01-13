@@ -9,9 +9,9 @@ const Game = () => {
 
   const currentSquare = history[history.length - 1];
 
-  function handlePlay(nextSquares) {
+  function handlePlay(newSquare) {
     setIsXNext(!isXNext);
-    setHistory([...history, nextSquares]);
+    setHistory([...history, newSquare]);
   }
 
   return (
@@ -25,7 +25,7 @@ const Game = () => {
           isXNext={isXNext}
           handlePlay={handlePlay}
         />
-        <History />
+        <History history={history} />
       </div>
     </main>
   );
