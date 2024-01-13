@@ -6,12 +6,22 @@ import History from "./components/History";
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [isXNext, setIsXNext] = useState(true);
+  const [currentMove, setCurrentMove] = useState(0);
 
-  const currentSquare = history[history.length - 1];
+  const currentSquare = history[currentMove];
 
   function handlePlay(newSquare) {
     setIsXNext(!isXNext);
-    setHistory([...history, newSquare]);
+
+    const currentHistory = [...history.slice(0, currentMove + 1), newSquare];
+
+    setHistory(currentHistory);
+    setCurrentMove(currentHistory.length - 1);
+  }
+
+  function jumpToHistory(moveIndex) {
+    setCurrentMove(moveIndex);
+    setIsXNext(moveIndex % 2 === 0);
   }
 
   return (
@@ -25,7 +35,7 @@ const Game = () => {
           isXNext={isXNext}
           handlePlay={handlePlay}
         />
-        <History history={history} />
+        <History history={history} jumpToHistory={jumpToHistory} />
       </div>
     </main>
   );

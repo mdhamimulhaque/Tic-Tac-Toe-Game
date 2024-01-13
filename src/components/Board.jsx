@@ -30,7 +30,7 @@ const Board = ({ isXNext, squareValue, handlePlay }) => {
 
   return (
     <section className="col-span-8 min-h-screen flex flex-col justify-center items-center">
-      <h2 className="text-2xl font-semibold mb-2">{status}</h2>
+      <h2 className="text-3xl font-semibold mb-2">{status}</h2>
       <div>
         <div className="flex">
           <Square
